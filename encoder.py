@@ -1,5 +1,6 @@
 import base64
 import random
+from datetime import datetime
 
 ## Encode base16
 def encode16(message):
@@ -98,14 +99,21 @@ def main():
                     output_path = input()
                     with open(input_path) as file:
                         message  = file.read()
+                        start_time = datetime.now()
                         encoded_message = interface(bytes(message, "utf-8"))
                     
                     with open(output_path, "w") as out:
+                        print("Writing to file!")
                         out.write(encoded_message)
-                    print("Done!")
-                    return 1
+                    
                 except:
                     print("Path does not exist")
+                print("Done!")
+                finish_time = datetime.now()
+                print(f"Started at: {start_time.strftime('%H:%M:%S')}")
+                print(f"Finished at: {finish_time.strftime('%H:%M:%S')}")
+                print(f"Time ro run program: {finish_time - start_time}")
+                return 1
                 
 
         elif to_encode == "2":
@@ -113,10 +121,16 @@ def main():
             string = input()
             print("Output file path: ")
             output_path = input()
+            start_time = datetime.now()
             encoded_message = interface(bytes(string, "utf-8"))
             with open(output_path, "w") as out:
+                print("Writing to file!")
                 out.write(encoded_message)
             print("Done!")
+            finish_time = datetime.now()
+            print(f"Started at: {start_time.strftime('%H:%M:%S')}")
+            print(f"Finished at: {finish_time.strftime('%H:%M:%S')}")
+            print(f"Time ro run program: {finish_time - start_time}")
             return 1
             
 
